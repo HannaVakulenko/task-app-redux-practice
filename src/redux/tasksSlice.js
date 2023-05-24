@@ -1,4 +1,6 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+// import { persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage'; //defaults to localStorage for web
 
 const tasksInitialState = [
   { id: 0, text: 'Learn HTML and CSS', completed: true },
@@ -7,6 +9,7 @@ const tasksInitialState = [
   { id: 3, text: 'Discover Redux', completed: false },
   { id: 4, text: 'Build amazing apps', completed: false },
 ];
+
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState: tasksInitialState,
@@ -39,6 +42,14 @@ const tasksSlice = createSlice({
     },
   },
 });
+
+// const persistConfig = {
+//   key: 'tasks',
+//   storage,
+// };
+
 // Експортуємо генератори екшенів та редюсер
 export const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;
+
+// export const persistedTaskReducer = persistReducer(persistConfig, tasksReducer);
